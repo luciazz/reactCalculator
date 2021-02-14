@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
-import './App.css';
-import { Switch, Route, HashRouter as Router } from 'react-router-dom'
-import Calculator from './component/Calculator';
 
-const App = () => {
+const Calculator = () => {
 
   const [display, setDisplay] = useState(0);
   const [firstInput, setFirstInput] = useState(null);
@@ -94,15 +91,34 @@ const App = () => {
   }
 
   return (
-  <Router>
-  <div>
-    <Switch>
-      <Route exact path="/" component={Calculator} />
-      {/* <Route component={Default} /> */}
-    </Switch>
-  </div>
-</Router>
-  )
+    <div className="container">
+      <div className="result">
+      {display}
+      </div>
+      <div className="flex-container">
+        <div onClick={clear}>c</div>
+        <div onClick={reverse}>+/-</div>
+        <div onClick={percentage}>%</div>
+        <div onClick={()=>set('divide')}>/</div>
+
+        <div onClick={()=> insertNum('7')}>7</div>
+        <div onClick={()=> insertNum('8')}>8</div>
+        <div onClick={()=> insertNum('9')}>9</div>
+        <div onClick={()=>set('multi')}>X</div>
+        <div onClick={()=> insertNum('4')}>4</div>
+        <div onClick={()=> insertNum('5')}>5</div>
+        <div onClick={()=> insertNum('6')}>6</div>
+        <div onClick={()=>set('minus')}>-</div>
+        <div onClick={()=> insertNum('1')}>1</div>
+        <div onClick={()=> insertNum('2')}>2</div>
+        <div onClick={()=> insertNum('3')}>3</div>
+        <div onClick={()=>set('plus')}>+</div>
+        <div onClick={()=> insertNum('0')} style={{width:'160px'}}>0</div>
+        <div>.</div>
+        <div onClick={equal}>=</div>
+      </div>
+    </div>
+  );
 }
 
-export default App;
+export default Calculator;
